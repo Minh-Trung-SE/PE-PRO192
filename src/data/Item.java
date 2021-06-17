@@ -1,26 +1,55 @@
 package data;
 
-import java.util.Scanner;
+
+import util.Input;
 
 public class Item {
     protected int value;
     protected String creator;
 
-    public Item(int value, String creator) {
-        this.value = value;
+    public Item(){
+        value = 0;
+        creator = "";
+    }
+
+    public Item(int value, String creator){
+        this.value = value ;
         this.creator = creator;
     }
 
-    public Item() {
+// getter and setter
+    public void setValue(int value) {
+        this.value = value;
     }
-    
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+//method
+    public void input() {
+        value = Input.getValue("Enter value: ");
+        creator = Input.getString("Enter Creator: ");
+    }
+
     public void output(){
-        System.out.println("Value: " + value);
-        System.out.println("Creator: " + creator);
+        System.out.println("The value = " + getValue());
+        System.out.println("The creator: " + getCreator());
     }
-    
-    public void input(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter value: ");
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "value=" + value +
+                ", creator='" + creator + '\'' +
+                '}';
     }
 }
