@@ -3,8 +3,9 @@ package util;
 import java.util.Scanner;
 
 public class Input {
-    private static Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
     public static int getValue(String message){
+
         int intNumber;
         while (true){
             try{

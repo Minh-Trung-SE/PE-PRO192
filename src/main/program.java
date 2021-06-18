@@ -18,17 +18,17 @@ class program {
         int choice = 0;
         ItemList itemList = new ItemList();
         do {
-            System.out.println("1. add a new vase");
-            System.out.println("2. add a new statue");
-            System.out.println("3. add a new painting");
-            System.out.println("4. display all items");
-            System.out.println("5. find the items by the creator ");
-            System.out.println("6. update the item by its index");
-            System.out.println("7. remove the item by its index");
-            System.out.println("8. display the list of vase items ");
-            System.out.println("9. sorts items in ascending order based on their values ");
-            System.out.println("10. exit");
-            System.out.println("input your choice:");
+            System.out.println("1. Add a new vase");
+            System.out.println("2. Add a new statue");
+            System.out.println("3. Add a new painting");
+            System.out.println("4. Display all items");
+            System.out.println("5. Find the items by the creator ");
+            System.out.println("6. Update the item by its index");
+            System.out.println("7. Remove the item by its index");
+            System.out.println("8. Display the list of vase items ");
+            System.out.println("9. Sorts items in ascending order based on their values ");
+            System.out.println("10. Exit");
+            System.out.print("Input your choice: ");
             choice = Integer.parseInt(sc.nextLine());
             switch (choice) {
                 case 1:
@@ -57,20 +57,26 @@ class program {
                     }
                     break;
                 case 6:
-                    itemList.updateItem(Input.getValue("Enter The Index of Item: "));
+                    if (itemList.updateItem(Input.getValue("Enter The Index of Item: "))){
+                        System.out.println("Update success!");
+                    }
                     break;
                 case 7:
-                    itemList.remove(Input.getValue("Enter The Index of Item: "));
-                    break;
+                    if (itemList.remove(Input.getValue("Enter The Index of Item: "))){
+                        System.out.println("Remove success!");
+                    }
+
+                break;
                 case 9:
-                    Comparator<Item> sorting = (o1, o2) -> Integer.compare(o1.getValue(),o2.getValue());
+                    Comparator<Item> sorting = (o1, o2) -> Integer.compare(o1.getValue(), o2.getValue());
                     itemList.sortItem(sorting);
                     break;
                 case 8:
-                    Filter<Item> filterVase = item ->{return item instanceof Vase;};
-                    for (Item itemVase : itemList.gruopByType(filterVase)) {
+                    Filter<Item> filterVase = o -> o instanceof Vase;
+
+                    for (Item itemVase : itemList.groupByType(filterVase)) {
                         System.out.println(itemVase);
-                    };
+                    }
                     break;
 
             }
