@@ -65,20 +65,17 @@ class program {
                     if (itemList.remove(Input.getValue("Enter The Index of Item: "))){
                         System.out.println("Remove success!");
                     }
-
-                break;
-                case 9:
-                    Comparator<Item> sorting = (o1, o2) -> Integer.compare(o1.getValue(), o2.getValue());
-                    itemList.sortItem(sorting);
                     break;
                 case 8:
                     Filter<Item> filterVase = o -> o instanceof Vase;
-
                     for (Item itemVase : itemList.groupByType(filterVase)) {
                         System.out.println(itemVase);
                     }
                     break;
-
+                case 9:
+                    Comparator<Item> sorting = (o1, o2) -> Integer.compare(o1.getValue(), o2.getValue());
+                    itemList.sortItem(sorting);
+                    break;
             }
         } while (choice <= 9 && choice > 0);
     }
